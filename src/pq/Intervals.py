@@ -1,4 +1,5 @@
 
+from typing import List
 from pq.Interval import Interval
 import datetime
 
@@ -59,7 +60,7 @@ class Intervals():
 
         return None
             
-    def get_tags(self):
+    def get_tags(self) -> List[str]:
         tags = []
 
         for interval in self.__intervals:
@@ -68,6 +69,17 @@ class Intervals():
                     tags.append(tag)
 
         return tags
+
+    def get_tags_string(self) -> str:
+        tags = self.get_tags()
+        tags_string = ''
+        for tag in tags:
+            tag = tag.replace("'", "\\'")
+            if ' ' in tag:
+                tag = f"'{tag}'" 
+            tags_string += tag + ' '
+
+        return tags_string.rstrip()
 
     def get_ids_join(self):
         ids_join = ''

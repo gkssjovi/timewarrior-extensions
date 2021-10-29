@@ -51,7 +51,7 @@ class CollapseCommand():
 
             command.execute("timew tag {id} {tags}".format(
                 id=interval.get_id(),
-                tags=' '.join(interval.get_tags())
+                tags=interval.get_tags_string()
             ))
 
             if interval.get_annotation():

@@ -1,3 +1,4 @@
+from typing import List
 import dateutil
 from dateutil import parser
 from dateutil.tz import tz
@@ -20,8 +21,19 @@ class Interval(object):
     def get_end(self):
         return self.__get_local_datetime(self.end) if self.end is not None else None
     
-    def get_tags(self):
+    def get_tags(self) -> List[str]:
         return self.tags
+
+    def get_tags_string(self) -> str:
+        tags = self.get_tags()
+        tags_string = ''
+        for tag in tags:
+            tag = tag.replace("'", "\\'")
+            if ' ' in tag:
+                tag = f"'{tag}'" 
+            tags_string += tag + ' '
+
+        return tags_string.rstrip()
 
     def get_annotation(self):
         return self.annotation
