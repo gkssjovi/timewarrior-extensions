@@ -38,6 +38,12 @@ class Interval(object):
     def get_annotation(self):
         return self.annotation
 
+    def get_duration(self):
+        if self.is_open():
+            return datetime.now(tz=tz.tzlocal()) - self.get_start()
+        else:
+            return self.get_end() - self.get_start()
+
     def get_diff(self):
         start = self.get_start()
         end = self.get_start() if self.is_open() else self.get_end()

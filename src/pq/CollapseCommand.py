@@ -26,7 +26,6 @@ class CollapseCommand():
         last_interval = intervals.get_last_close()
 
         if last_interval:
-
             if len(intervals.get()) == 1 and (log == LOG_INFO or log == LOG_DEBUG):
                 command.summary("\nThere is only one record:")
                 return None
